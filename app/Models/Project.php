@@ -16,8 +16,8 @@ class Project extends Model
         // "type_id"
     ];
 
-    // public function type()
-    // {
-    //     return $this->belongsTo(Type::class); //relazione definita
-    // }
+    public function technologies()
+    {
+        return $this->belongsToMany(Technology::class); //relazione definita
+    }
 }
