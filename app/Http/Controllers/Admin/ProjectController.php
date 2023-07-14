@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Project;
-
 use App\Http\Requests\ProjectRequest;
-
 use App\Http\Controllers\Controller;
+use App\Models\Technology;
 
 class ProjectController extends Controller
 {
@@ -60,6 +59,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+
         return view("admin.projects.show", compact("project"));
     }
 
@@ -71,7 +71,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'technologies'));
     }
 
     /**
@@ -84,11 +85,13 @@ class ProjectController extends Controller
     public function update(ProjectRequest $request, Project $project)
     {
         $data = $request->validated();
-        $project = new Project;
+
         $project->fill($data);
+        $project->technologies()->sync($data["technologies"]);
         $project->update();
 
-        return to_route("admin.projects.update", $project);
+        // dd($data);
+        return to_route('admin.projects.index');
     }
 
     /**

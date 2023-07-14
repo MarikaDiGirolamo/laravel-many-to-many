@@ -47,12 +47,14 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
 
-                    {{-- <label for="Type">Type</label>
-                    <select name="type" id="">
-                        @foreach ($Typeprojects as $TypeComic)
-                            <option @selected($project->type == $TypeComic->type)>{{ $TypeComic->type }}</option>
-                        @endforeach
-                    </select> --}}
+                    @foreach ($technologies as $i => $technology)
+                        <div class="form-check">
+                            <input type="checkbox" value="{{ $technology->id }}" name="technologies[]"
+                                id="technologies{{ $i }}" class="form-check-input">
+                            <label for="technologies{{ $i }}"
+                                class="form-check-label">{{ $technology->name }}</label>
+                        </div>
+                    @endforeach
 
                     <input class="form-control mt-4 btn btn-primary" type="submit" value="Invia">
                 </form>

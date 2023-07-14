@@ -28,7 +28,8 @@ class ProjectRequest extends FormRequest
             "content" => "min:5|max:255",
             // "type_id" => "nullable|exist:types,id",
             "image" => "nullable|url|max:255",
-            "link" => "nullable|url|max:255"
+            "link" => "nullable|url|max:255",
+            "technologies" => "nullable|exists:technologies,id"
         ];
     }
 
