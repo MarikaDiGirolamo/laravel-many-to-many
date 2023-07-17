@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\File;
 
 class ProjectRequest extends FormRequest
 {
@@ -27,7 +28,7 @@ class ProjectRequest extends FormRequest
             "title" => "required|min:3|max:50",
             "content" => "min:5|max:255",
             // "type_id" => "nullable|exists:types,id",
-            "image" => "nullable|image|max:10240",
+            "image" => ["nullable", File::types(["png", "jpg"])->max(20 * 1024)],
             "link" => "nullable|url|max:255",
             "technologies" => "nullable|exists:technologies,id"
         ];
