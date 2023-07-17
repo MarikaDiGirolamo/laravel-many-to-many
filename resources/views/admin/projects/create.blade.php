@@ -39,7 +39,7 @@
                     @enderror
 
                     <label for="Image">Image</label>
-                    <input class="form-control @error('image') is-invalid @enderror" type="text" name="image">
+                    <input class="form-control @error('image') is-invalid @enderror" type="file" name="image">
                     @error('Image')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -59,6 +59,5 @@
                 </form>
             </div>
         </div>
-
     </div>
 @endsection

@@ -26,8 +26,8 @@ class ProjectRequest extends FormRequest
         return [
             "title" => "required|min:3|max:50",
             "content" => "min:5|max:255",
-            // "type_id" => "nullable|exist:types,id",
-            "image" => "nullable|url|max:255",
+            // "type_id" => "nullable|exists:types,id",
+            "image" => "nullable|image|max:10240",
             "link" => "nullable|url|max:255",
             "technologies" => "nullable|exists:technologies,id"
         ];

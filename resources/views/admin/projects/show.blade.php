@@ -6,11 +6,13 @@
             <div class="col-12">
                 <h1>{{ $project->title }}</h1>
                 {{-- <h2>Categoria: {{ $project->type ? $project->type->name : 'None' }}</h2> --}}
+
             </div>
         </div>
 
         <div>
             @if ($project->image)
+                <img class="img-fluid" src="{{ asset('storage/' . $project->image) }}">
                 <img src="{{ $project->image }}" alt="{{ $project->title }}">
             @else
                 <img src="https://i0.wp.com/theperfectroundgolf.com/wp-content/uploads/2022/04/placeholder.png"

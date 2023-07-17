@@ -14,7 +14,8 @@
         <h1>Modify Item</h1>
         <div class="row g-4 py-4">
             <div class="col">
-                <form action="{{ route('admin.projects.update', $project) }}" method="post" class="need-validation">
+                <form action="{{ route('admin.projects.update', $project) }}" method="post" class="need-validation"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -29,14 +30,6 @@
                     <input class="form-control @error('content') is-invalid @enderror" type="text" name="content"
                         value="{{ $project->content }}">
                     @error('content')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-
-
-                    <label for="image">Image</label>
-                    <input class="form-control @error('image') is-invalid @enderror" type="text" name="image"
-                        value="{{ $project->image }}">
-                    @error('image')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
 
@@ -55,6 +48,16 @@
                                 class="form-check-label">{{ $technology->name }}</label>
                         </div>
                     @endforeach
+
+
+                    <label for="Image">Image</label>
+                    @if ($project->image)
+                        <img class="img-fluid" src="{{ asset('storage/' . $project->image) }}">
+                    @endif
+                    <input class="form-control @error('img') is-invalid @enderror" type="file" name="image">
+                    @error('Image')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
 
                     <input class="form-control mt-4 btn btn-primary" type="submit" value="Invia">
                 </form>

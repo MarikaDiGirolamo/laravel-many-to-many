@@ -13,6 +13,7 @@ class Project extends Model
         "content",
         "image",
         "link",
+        "technology_id"
         // "type_id"
     ];
 

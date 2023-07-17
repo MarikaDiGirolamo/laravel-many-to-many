@@ -6,7 +6,13 @@
 
             @foreach ($projects as $project)
                 <div class="card p-0 mb-4" style="width: 18rem;">
-                    <img src="{{ $project->image }}" class="card-img-top" alt="{{ $project->title }}">
+                    @if ($project->image)
+                        <img src="{{ asset('storage/' . $project->image) }}" class="card-img-top" alt="...">
+                        {{-- @else
+                        <img src="https://i0.wp.com/theperfectroundgolf.com/wp-content/uploads/2022/04/placeholder.png"
+                            alt="{{ $project->title }}"> --}}
+                    @endif
+                    {{-- <img src=src="{{ asset('storage/' . $project->image) }}" class="card-img-top" alt="{{ $project->title }}"> --}}
                     <div class="card-body">
                         <h5 class="card-title">{{ $project->title }}</h5>
                         <p class="card-text">{{ $project->content }}</p>
